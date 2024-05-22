@@ -1,0 +1,23 @@
+{
+    "root": true,
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "project": [
+            "./tsconfig.json"
+        ]
+    },
+    "env": {
+        "node": true,
+        "es6": true
+    },
+    "rules": {
+        "brace-style": ["error", "allman"],
+        "no-unused-vars": 1
+    }
+}
