@@ -1,9 +1,9 @@
 // libraries
 import { DependencyContainer, Lifecycle } from "tsyringe";
 
-// aki types
-import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
-import { IPostDBLoadMod } from "@spt-aki/models/external/IPostDBLoadMod";
+// spt types
+import { IPreSptLoadMod } from "@spt/models/external/IPreSptLoadMod";
+import { IPostDBLoadMod } from "@spt/models/external/IPostDBLoadMod";
 
 // mod classes
 import { KokoConfig } from "./utils/Config";
@@ -12,9 +12,9 @@ import { KokoItemValidator } from "./utils/ItemValidator";
 import { KokoAssortGenerator } from "./utils/AssortGenerator";
 import { KokoHekmatyar } from "./KokoHekmatyar";
 
-class Mod implements IPreAkiLoadMod, IPostDBLoadMod
+class Mod implements IPreSptLoadMod, IPostDBLoadMod
 {
-    public preAkiLoad(container: DependencyContainer): void
+    public preSptLoad(container: DependencyContainer): void
     {
         container.register<KokoConfig>("KokoConfig", KokoConfig, { lifecycle: Lifecycle.Singleton });
         container.register<KokoTraderGenerator>("KokoTraderGenerator", KokoTraderGenerator, { lifecycle: Lifecycle.Singleton });

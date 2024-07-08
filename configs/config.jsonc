@@ -26,7 +26,7 @@
             // TODO
         ]
     },
-    "whitelist": {              // Force inclusion of these items (note: Aki might still strip these due to BSG's
+    "whitelist": {              // Force inclusion of these items (note: Spt might still strip these due to BSG's
         "items": [
             // item ids
         ],

@@ -1,20 +1,20 @@
 import { inject, injectable } from "tsyringe";
 
-import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
-import { ItemHelper } from "@spt-aki/helpers/ItemHelper";
-import { HandbookHelper } from "@spt-aki/helpers/HandbookHelper";
-import { RandomUtil } from "@spt-aki/utils/RandomUtil";
-import { IBarterScheme, ITraderAssort } from "@spt-aki/models/eft/common/tables/ITrader";
-import { ITemplateItem } from "@spt-aki/models/eft/common/tables/ITemplateItem";
-import { Item, Upd } from "@spt-aki/models/eft/common/tables/IItem";
-import { Money } from "@spt-aki/models/enums/Money";
-import { PresetHelper } from "@spt-aki/helpers/PresetHelper";
+import { DatabaseServer } from "@spt/servers/DatabaseServer";
+import { ItemHelper } from "@spt/helpers/ItemHelper";
+import { HandbookHelper } from "@spt/helpers/HandbookHelper";
+import { RandomUtil } from "@spt/utils/RandomUtil";
+import { IBarterScheme, ITraderAssort } from "@spt/models/eft/common/tables/ITrader";
+import { ITemplateItem } from "@spt/models/eft/common/tables/ITemplateItem";
+import { Item, Upd } from "@spt/models/eft/common/tables/IItem";
+import { Money } from "@spt/models/enums/Money";
+import { PresetHelper } from "@spt/helpers/PresetHelper";
 
 import { KokoConfig } from "./Config";
 import { KokoItemValidator } from "./ItemValidator";
-import { IPreset } from "@spt-aki/models/eft/common/IGlobals";
-import { HashUtil } from "@spt-aki/utils/HashUtil";
-import { PresetController } from "@spt-aki/controllers/PresetController";
+import { IPreset } from "@spt/models/eft/common/IGlobals";
+import { HashUtil } from "@spt/utils/HashUtil";
+import { PresetController } from "@spt/controllers/PresetController";
 
 @injectable()
 export class KokoAssortGenerator {

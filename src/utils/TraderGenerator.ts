@@ -1,12 +1,12 @@
 import { inject, injectable } from "tsyringe";
-import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
-import { ConfigServer } from "@spt-aki/servers/ConfigServer";
-import { IRagfairConfig } from "@spt-aki/models/spt/config/IRagfairConfig";
-import { IInsuranceConfig } from "@spt-aki/models/spt/config/IInsuranceConfig";
-import { ITraderConfig } from "@spt-aki/models/spt/config/ITraderConfig";
-import { ConfigTypes } from "@spt-aki/models/enums/ConfigTypes";
-import { ImageRouter } from "@spt-aki/routers/ImageRouter";
-import { ITrader } from "@spt-aki/models/eft/common/tables/ITrader";
+import { DatabaseServer } from "@spt/servers/DatabaseServer";
+import { ConfigServer } from "@spt/servers/ConfigServer";
+import { IRagfairConfig } from "@spt/models/spt/config/IRagfairConfig";
+import { IInsuranceConfig } from "@spt/models/spt/config/IInsuranceConfig";
+import { ITraderConfig } from "@spt/models/spt/config/ITraderConfig";
+import { ConfigTypes } from "@spt/models/enums/ConfigTypes";
+import { ImageRouter } from "@spt/routers/ImageRouter";
+import { ITrader } from "@spt/models/eft/common/tables/ITrader";
 
 interface ILocales {
     FullName: string;
@@ -40,8 +40,6 @@ export class KokoTraderGenerator {
     public setInsuranceConfig(traderId: string, insurance: { insuranceMultiplier?: number, returnChancePercent?: number })
     {
         const insuranceConfig = this.configServer.getConfig<IInsuranceConfig>(ConfigTypes.INSURANCE);
-
-        insuranceConfig.insuranceMultiplier[traderId] ??= insurance.insuranceMultiplier;
         insuranceConfig.returnChancePercent[traderId] ??= insurance.returnChancePercent;
     }
 

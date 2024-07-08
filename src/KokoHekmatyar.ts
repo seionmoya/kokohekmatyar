@@ -1,11 +1,11 @@
 import path from "node:path";
 import { inject, injectable } from "tsyringe";
-import { PreAkiModLoader } from "@spt-aki/loaders/PreAkiModLoader";
-import { ITraderBase } from "@spt-aki/models/eft/common/tables/ITrader";
-import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
-import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
-import { VFS } from "@spt-aki/utils/VFS";
-import { JsonUtil } from "@spt-aki/utils/JsonUtil";
+import { PreSptModLoader } from "@spt/loaders/PreSptModLoader";
+import { ITraderBase } from "@spt/models/eft/common/tables/ITrader";
+import { ILogger } from "@spt/models/spt/utils/ILogger";
+import { DatabaseServer } from "@spt/servers/DatabaseServer";
+import { VFS } from "@spt/utils/VFS";
+import { JsonUtil } from "@spt/utils/JsonUtil";
 
 import { KokoTraderGenerator } from "./utils/TraderGenerator";
 import { KokoAssortGenerator } from "./utils/AssortGenerator";
@@ -21,7 +21,7 @@ export class KokoHekmatyar
     protected baseTrader: ITraderBase;
 
     constructor(
-        @inject("PreAkiModLoader") protected preAkiModLoader: PreAkiModLoader,
+        @inject("PreSptModLoader") protected preSptModLoader: PreSptModLoader,
         @inject("DatabaseServer") protected databaseServer: DatabaseServer,
         @inject("WinstonLogger") protected logger: ILogger,
         @inject("VFS") protected vfs: VFS,
@@ -32,7 +32,7 @@ export class KokoHekmatyar
     {
         this.modAuthor = packageJson.author;
         this.modName = packageJson.name;
-        this.modPath = this.preAkiModLoader.getModPath(`${this.modAuthor}-${this.modName}`);
+        this.modPath = this.preSptModLoader.getModPath(`${this.modAuthor}-${this.modName}`);
 
         this.baseTrader = this.jsonUtil.deserializeJsonC(this.vfs.readFile(path.join(this.modPath + "/db/base.jsonc")));
     }

@@ -1,5 +1,5 @@
-// aki types
-import { MinMax } from "@spt-aki/models/common/MinMax";
+// spt types
+import { MinMax } from "@spt/models/common/MinMax";
 
 export interface IItemCategoryList
 {

@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 
-import { ITemplateItem } from "@spt-aki/models/eft/common/tables/ITemplateItem";
-import { PresetHelper } from "@spt-aki/helpers/PresetHelper";
+import { ITemplateItem } from "@spt/models/eft/common/tables/ITemplateItem";
+import { PresetHelper } from "@spt/helpers/PresetHelper";
 
 import { KokoConfig } from "./Config";
 
