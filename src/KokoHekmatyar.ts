@@ -42,7 +42,7 @@ export class KokoHekmatyar
         this.logger.debug(`[${this.modAuthor}-${this.modName}] postDb Loading...`);
 
         this.traderGenerator.addTraderToRagfair(this.baseTrader._id, true);
-        this.traderGenerator.setTraderImage(this.baseTrader._id, path.join(`${this.modPath}res/kokohekmatyar.png`));
+        this.traderGenerator.setTraderImage(this.baseTrader, path.join(`${this.modPath}/res/kokohekmatyar.png`));
 
         this.traderGenerator.setInsuranceConfig(this.baseTrader._id, {});
         this.traderGenerator.setTraderConfig(this.baseTrader._id, 3600);
@@ -54,12 +54,7 @@ export class KokoHekmatyar
                 barter_scheme: {},
                 loyal_level_items: {}
             },
-            base: this.baseTrader,
-            questassort: {
-                started: {},
-                success: {},
-                fail: {}
-            }
+            base: this.baseTrader
         });
         this.traderGenerator.setTraderLocales(this.baseTrader._id, {
             FullName: "Koko Hekmatyar",
@@ -70,7 +65,7 @@ export class KokoHekmatyar
         });
 
         // generate assort
-        this.assortGenerator.generate("kokohekmatyar");
+        this.assortGenerator.generate(this.baseTrader._id);
 
         this.logger.debug(`[${this.modAuthor}-${this.modName}] postDb Loaded`);
     }

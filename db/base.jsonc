@@ -1,5 +1,5 @@
 {
-    "_id": "kokohekmatyar",
+    "_id": "6726dc8a2b56196f01000000",
     "working": true,
     "availableInRaid": false,
     "items_buy": {
@@ -43,7 +43,8 @@
         "excluded_category": []
     },
     "gridHeight": 150,
-    "loyaltyLevels": [{
+    "loyaltyLevels": [
+        {
             "minLevel": 1,
             "minSalesSum": 0,
             "minStanding": 0,

@@ -7,6 +7,8 @@ import { ITraderConfig } from "@spt/models/spt/config/ITraderConfig";
 import { ConfigTypes } from "@spt/models/enums/ConfigTypes";
 import { ImageRouter } from "@spt/routers/ImageRouter";
 import { ITrader } from "@spt/models/eft/common/tables/ITrader";
+import { ITraderBase } from "@spt/models/eft/common/tables/ITrader";
+import { Traders } from "@spt/models/enums/Traders";
 
 interface ILocales {
     FullName: string;
@@ -32,9 +34,9 @@ export class KokoTraderGenerator {
         ragfairConfig.traders[traderId] = ragfair;
     }
 
-    public setTraderImage(traderId: string, imagePath: string)
+    public setTraderImage(base: ITraderBase, imagePath: string)
     {
-        this.imageRouter.addRoute(`/files/trader/avatar/${traderId}`, imagePath);
+        this.imageRouter.addRoute(base.avatar.replace(".png", ""), imagePath);
     }
 
     public setInsuranceConfig(traderId: string, insurance: { insuranceMultiplier?: number, returnChancePercent?: number })
@@ -61,6 +63,7 @@ export class KokoTraderGenerator {
         const database = this.databaseServer.getTables();
 
         database.traders[traderId] = traderProps;
+        Traders[traderId] = traderId;
     }
 
     public setTraderLocales(traderId: string, newLocale: ILocales)

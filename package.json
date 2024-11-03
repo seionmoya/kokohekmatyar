@@ -1,10 +1,10 @@
 {
     "name": "kokohekmatyar",
-    "version": "1.6.0",
+    "version": "1.7.0",
     "main": "src/mod.js",
     "license": "MIT",
     "author": "seionmoya",
-    "sptVersion": "~3.9",
+    "sptVersion": "~3.10",
     "scripts": {
         "build": "node ./build.mjs",
         "lint": "eslint ./src/**/* --ext .ts"
