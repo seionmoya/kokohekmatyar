@@ -44,7 +44,7 @@ export class KokoHekmatyar
         this.traderGenerator.addTraderToRagfair(this.baseTrader._id, true);
         this.traderGenerator.setTraderImage(this.baseTrader, path.join(`${this.modPath}/res/kokohekmatyar.png`));
 
-        this.traderGenerator.setInsuranceConfig(this.baseTrader._id, {});
+        this.traderGenerator.setInsuranceConfig(this.baseTrader._id, { insuranceMultiplier: 1, returnChancePercent: 100});
         this.traderGenerator.setTraderConfig(this.baseTrader._id, 3600);
 
         this.traderGenerator.setTraderProps(this.baseTrader._id, {
@@ -54,7 +54,27 @@ export class KokoHekmatyar
                 barter_scheme: {},
                 loyal_level_items: {}
             },
-            base: this.baseTrader
+            base: this.baseTrader,
+            dialogue: {
+                "insuranceStart": [
+                    "5914451a86f7744c2d7102f9 0"
+                ],
+                "insuranceFound": [
+                    "58fe0e3486f77471f772c3f2 0"
+                ],
+                "insuranceExpired": [
+                    "5900a72286f7742daa4835d6 0"
+                ],
+                "insuranceComplete": [
+                    "59008bd186f77459395f4d63 0"
+                ],
+                "insuranceFailed": [
+                    "595f996586f774767d03cbea 0"
+                ],
+                "insuranceFailedLabs": [
+                    "5c1a3e2a86f77476ad6d23b0 0"
+                ]   
+            }
         });
         this.traderGenerator.setTraderLocales(this.baseTrader._id, {
             FullName: "Koko Hekmatyar",

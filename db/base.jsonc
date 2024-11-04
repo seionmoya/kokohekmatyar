@@ -11,12 +11,13 @@
     },
     "items_buy_prohibited": {},
     "customization_seller": false,
+    "medic": true,
     "name": "Koko Hekmatyar",
     "surname": "Hekmatyar",
     "nickname": "Koko",
     "location": "Wherever war might be",
     "avatar": "/files/trader/avatar/kokohekmatyar.png",
-    "balance_rub": 10000000,
+    "balance_rub": 100000000,
     "balance_dol": 0,
     "balance_eur": 0,
     "unlockedByDefault": true,
@@ -26,19 +27,18 @@
     "currency": "RUB",
     "nextResupply": 1615141448,
     "repair": {
-        "availability": false,
-        "quality": "2",
+        "availability": true,
+        "quality": "0.1",
         "excluded_id_list": [],
         "excluded_category": [],
         "currency": "5449016a4bdc2d6f028b456f",
-        "currency_coefficient": 1,
-        "price_rate": 10
+        "currency_coefficient": 1
     },
     "insurance": {
-        "availability": false,
+        "availability": true,
         "min_payment": 0,
-        "min_return_hour": 0,
-        "max_return_hour": 0,
+        "min_return_hour": 1,
+        "max_return_hour": 1,
         "max_storage_time": 99,
         "excluded_category": []
     },
@@ -48,11 +48,11 @@
             "minLevel": 1,
             "minSalesSum": 0,
             "minStanding": 0,
-            "buy_price_coef": 38,
-            "repair_price_coef": 175,
-            "insurance_price_coef": 10,
+            "buy_price_coef": 100,
+            "repair_price_coef": 100,
+            "insurance_price_coef": 100,
             "exchange_price_coef": 0,
-            "heal_price_coef": 0
+            "heal_price_coef": 100
         }
     ],
     "sell_category": [
