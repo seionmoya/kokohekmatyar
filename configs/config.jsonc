@@ -25,7 +25,7 @@
             // category ids
         ]
     },
-    "buyWhitelist": {                   // Force inclusion of these items (note: SPT might still strip these due to BSG's
+    "buyWhitelist": {                   // Force inclusion of these items (note: SPT might still strip these due to BSG's blacklist)
         "items": [
             // item ids
         ]
