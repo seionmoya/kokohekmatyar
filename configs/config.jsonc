@@ -3,36 +3,64 @@
     - ./server/assets/database/templates/items.json
 */
 {
-    "currency": "rub",          // The currency for the offers. Valid: rub, usd, eur
-    "priceMultiplier": {        // Randomize price at startup, Lower than 1.0 means cheaper.
-        "min": 1.0,             // Valid: decimal, 0.01 to 9999
-        "max": 1.0              // Valid: decimal, 0.01 to 9999
+    "currency": "rub",                  // The currency for the offers. Valid: rub, usd, eur
+    "priceMultiplier": {                // Randomize price at startup, Lower than 1.0 means cheaper.
+        "min": 1.0,                     // Valid: decimal, 0.01 to 9999
+        "max": 1.0                      // Valid: decimal, 0.01 to 9999
     },
-    "priceLimits": {            // Caps the generated price.
-        "min": 1,               // Lowest possible price. Valid: 0 to 999999999
-        "max": 999999999        // Highest-possible price. Valid: 0 to 999999999
+    "priceLimits": {                    // Caps the generated price.
+        "min": 1,                       // Lowest possible price. Valid: 0 to 999999999
+        "max": 999999999                // Highest-possible price. Valid: 0 to 999999999
     },
-    "isStockInfinite": true,    // Whenever the offers should have near-infinite supply. Valid: false, true
-    "stockLimits": {            // The amount of items in an offer when 'isStockInfinite' is 'false'.
-        "min": 1,               // Valid: rounded, 1 to 999999999
-        "max": 100000           // Valid: rounded, 1 to 999999999
+    "isStockInfinite": true,            // Whenever the offers should have near-infinite supply. Valid: false, true
+    "stockLimits": {                    // The amount of items in an offer when 'isStockInfinite' is 'false'.
+        "min": 1,                       // Valid: rounded, 1 to 999999999
+        "max": 100000                   // Valid: rounded, 1 to 999999999
     },
-    "blacklist": {              // Items matching item._id on this list won't appear in koko's offers.
+    "buyBlacklist": {                   // Items matching item._id on this list won't appear in koko's offers.
         "items": [
             // item ids
         ],
         "categories": [
             // category ids
-            // TODO
         ]
     },
-    "whitelist": {              // Force inclusion of these items (note: Spt might still strip these due to BSG's
+    "buyWhitelist": {                   // Force inclusion of these items (note: SPT might still strip these due to BSG's
+        "items": [
+            // item ids
+        ]
+    },
+    "sellBlacklist": {                  // Items matching item._id on this list CANNOT be sold to Koko.
         "items": [
             // item ids
         ],
         "categories": [
             // category ids
-            // TODO
+        ]
+    },
+    "sellWhitelist": {                  // Items matching item._id on this list can be sold to Koko.
+        "items": [
+            // item ids
+        ],
+        "categories": [
+            "5661632d4bdc2d903d8b456b",
+            "5447e0e74bdc2d3c308b4567",
+            "543be5664bdc2dd4348b4569",
+            "5448e5284bdc2dcb718b4567",
+            "5448e53e4bdc2d60728b4567",
+            "5448fe124bdc2da5018b4567",
+            "543be5f84bdc2dd4348b456a",
+            "5422acb9af1c889c16000029",
+            "543be6674bdc2df1348b4569",
+            "567849dd4bdc2d150f8b456e",
+            "543be6564bdc2df4348b4568",
+            "5447e1d04bdc2dff2f8b4567",
+            "5448eb774bdc2d0a728b4567",
+            "5448ecbe4bdc2d60728b4568",
+            "616eb7aea207f41933308f46",
+            "5671435f4bdc2d96058b4569",
+            "5795f317245977243854e041",
+            "543be5e94bdc2df1348b4568"
         ]
     }
 }

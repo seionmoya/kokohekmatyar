@@ -207,7 +207,7 @@ export class KokoAssortGenerator {
         this.presetController.initialize();
 
         // get valid items
-        const validItems = dbItems.filter(x => this.itemValidator.isValid(x));
+        const validItems = dbItems.filter(x => this.itemValidator.isValid(x, dbItems));
 
         // generate assort for items
         for (const item of validItems)
@@ -224,38 +224,32 @@ export class KokoAssortGenerator {
 
     private generateNewItemIds ( items: Item[] )
     {
-        let ids = {}; // this is a map / record / dictionary
+        let ids = {}; // this is a dictionary
 
-        for ( let item of items )
+        for ( const item of items )
         {
             if ( !ids[ item._id ] )
             {
                 // add item id to change
                 ids[ item._id ] = this.hashUtil.generate();
-                //this.logger.error(`Found id ${item._id}, replace with: ${ids[item._id]}`);
             }
         }
 
         // replace the item ids
         for ( const oldId in ids )
         {
-            // not sure if this actually modifies the reference.
-            // you might need a normal for(;;) loop here
             for ( let item of items )
             {
                 // update node id
-                // not sure if debug messages of the server are shown in release mode, test this!
                 if ( item._id === oldId )
                 {
                     item._id = ids[ oldId ];
-                    //this.logger.error(`Replacing id ${item._id} with: ${ids[oldId]}`);
                 }
 
                 if ( item.parentId && item.parentId === oldId )
                 {
                     // update parent node id (if it exists)
                     item.parentId = ids[ oldId ];
-                    //this.logger.error(`Replacing parent id ${item.parentId} with: ${ids[oldId]}`);
                 }
             }
         }

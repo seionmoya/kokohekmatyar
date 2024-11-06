@@ -14,6 +14,8 @@ export interface IKokoConfig
     priceLimits: MinMax;
     isStockInfinite: boolean;
     stockLimits: MinMax;
-    blacklist: IItemCategoryList;
-    whitelist: IItemCategoryList;
+    buyBlacklist: IItemCategoryList;
+    buyWhitelist: IItemCategoryList;
+    sellWhitelist: IItemCategoryList;
+    sellBlacklist: IItemCategoryList;
 }

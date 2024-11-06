@@ -21,16 +21,37 @@ export class KokoItemValidator
         return item._type === "Item";
     }
 
-    private isValidBlacklistItem(item: ITemplateItem): boolean
+    private isValidBlacklistItem(item: ITemplateItem, dbItems: ITemplateItem[]): boolean
     {
         const kokoConfig = this.kokoConfig.getConfig();
 
         // Item must not appear in koko's item blacklist
-        for (const blacklistId in kokoConfig.blacklist.items)
+        for (const blacklistId in kokoConfig.buyBlacklist.items)
         {
             if (item._id == blacklistId)
             {
                 return false;
+            }
+        }
+
+        for (const blacklistId in kokoConfig.buyBlacklist.categories)
+        {
+            let lookupId = item._parent;
+
+            while (true)
+            {
+                if (item._parent === undefined)
+                {
+                    // above base item node
+                    break;
+                }
+
+                if (lookupId == blacklistId)
+                {
+                    return false;
+                }
+
+                lookupId = dbItems[lookupId]._parent;
             }
         }
 
@@ -42,7 +63,7 @@ export class KokoItemValidator
         const kokoConfig = this.kokoConfig.getConfig();
 
         // Item appearing in koko's item whitelist must appear
-        for (const whitelistId in kokoConfig.whitelist.items)
+        for (const whitelistId in kokoConfig.buyWhitelist.items)
         {
             if (item._id == whitelistId)
             {
@@ -53,14 +74,14 @@ export class KokoItemValidator
         return false;
     }
 
-    public isValid(item: ITemplateItem): boolean
+    public isValid(item: ITemplateItem, dbItems: ITemplateItem[]): boolean
     {
         let result = this.isValidItemTemplate(item);
 
         if (result === true)
         {
             // item found, we might need to blacklist it
-            result = this.isValidBlacklistItem(item);
+            result = this.isValidBlacklistItem(item, dbItems);
         }
 
         if (result === false)

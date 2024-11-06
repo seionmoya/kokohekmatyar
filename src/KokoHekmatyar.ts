@@ -7,6 +7,7 @@ import { DatabaseServer } from "@spt/servers/DatabaseServer";
 import { VFS } from "@spt/utils/VFS";
 import { JsonUtil } from "@spt/utils/JsonUtil";
 
+import { KokoConfig } from "./utils/Config";
 import { KokoTraderGenerator } from "./utils/TraderGenerator";
 import { KokoAssortGenerator } from "./utils/AssortGenerator";
 
@@ -26,6 +27,7 @@ export class KokoHekmatyar
         @inject("WinstonLogger") protected logger: ILogger,
         @inject("VFS") protected vfs: VFS,
         @inject("JsonUtil") protected jsonUtil: JsonUtil,
+        @inject("KokoConfig") protected kokoConfig: KokoConfig,
         @inject("KokoTraderGenerator") protected traderGenerator: KokoTraderGenerator,
         @inject("KokoAssortGenerator") protected assortGenerator: KokoAssortGenerator
     )
@@ -40,6 +42,12 @@ export class KokoHekmatyar
     public postDBLoad()
     {
         this.logger.debug(`[${this.modAuthor}-${this.modName}] postDb Loading...`);
+
+        const config = this.kokoConfig.getConfig();
+        this.baseTrader.items_buy.id_list = config.sellWhitelist.items;
+        this.baseTrader.items_buy.category = config.sellWhitelist.categories;
+        this.baseTrader.items_buy_prohibited.id_list = config.sellBlacklist.items;
+        this.baseTrader.items_buy_prohibited.category = config.sellBlacklist.categories;
 
         this.traderGenerator.addTraderToRagfair(this.baseTrader._id, true);
         this.traderGenerator.setTraderImage(this.baseTrader, path.join(`${this.modPath}/res/kokohekmatyar.png`));
